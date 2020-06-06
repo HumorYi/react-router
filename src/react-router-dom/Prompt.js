@@ -1,12 +1,24 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { RouterContext } from './RouterContext'
 import Lifecycle from './Lifecycle'
 
-export default class Prompt extends Component {
-  render() {
-    return (
-      <div>
-        <h3>Prompt</h3>
-      </div>
-    )
-  }
+export default function Prompt({ message, when = true }) {
+  return (
+    <RouterContext.Consumer>
+      {context => {
+        if (!when) {
+          return null
+        }
+
+        return (
+          <Lifecycle
+            onMount={self => {
+              self.release = context.history.block(message)
+            }}
+            onUnMount={self.release()}
+          ></Lifecycle>
+        )
+      }}
+    </RouterContext.Consumer>
+  )
 }
