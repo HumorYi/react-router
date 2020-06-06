@@ -1,5 +1,7 @@
-import React, {useContext} from 'react';
-import {RouterContext} from './RouterContext'
+import { useContext } from 'react'
+import { RouterContext } from './RouterContext'
+
+// 读取 RouterContext 对应的数据
 
 export function useRouteMatch() {
   return useContext(RouterContext).match

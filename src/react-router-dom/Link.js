@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { RouterContext } from './RouterContext'
 
+// a 标签 跳转链接，处理点击事件
 export default class Link extends Component {
   static contextType = RouterContext
 

@@ -14,6 +14,8 @@ import React, { Component } from 'react'
 
 import {
   BrowserRouter as Router,
+  // HashRouter as Router,
+  // MemoryRouter as Router,
   Route,
   Link,
   Switch,
@@ -21,8 +23,10 @@ import {
   useHistory,
   useLocation,
   useParams,
+  Prompt,
   withRouter,
-  Prompt
+  HashRouter,
+  MemoryRouter
 } from './react-router-dom'
 
 import HomePage from './pages/HomePage'
@@ -121,8 +125,12 @@ class Product extends Component {
         <Route path={url + '/detail'} component={Detail} />
 
         <Link to="/">go home</Link>
-        <Prompt when={this.state.confirm} message={location => {return "Are you sure you want to leave-fun"
-        }} />
+        <Prompt
+          when={this.state.confirm}
+          message={location => {
+            return 'Are you sure you want to leave-fun'
+          }}
+        />
       </div>
     )
   }
