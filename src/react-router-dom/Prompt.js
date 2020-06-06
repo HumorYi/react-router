@@ -15,7 +15,7 @@ export default function Prompt({ message, when = true }) {
             onMount={self => {
               self.release = context.history.block(message)
             }}
-            onUnMount={self.release()}
+            onUnMount={self => self.release()}
           ></Lifecycle>
         )
       }}

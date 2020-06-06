@@ -21,8 +21,8 @@ import {
   useHistory,
   useLocation,
   useParams,
-  withRouter
-  // Prompt
+  withRouter,
+  Prompt
 } from './react-router-dom'
 
 import HomePage from './pages/HomePage'
@@ -99,6 +99,13 @@ function App() {
 // withRouter
 @withRouter
 class Product extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      confirm: true
+    }
+  }
+
   render() {
     const {
       match: {
@@ -112,6 +119,10 @@ class Product extends Component {
         <h1>Product-{id}</h1>
         <Link to={url + '/detail'}>详情</Link>
         <Route path={url + '/detail'} component={Detail} />
+
+        <Link to="/">go home</Link>
+        <Prompt when={this.state.confirm} message={location => {return "Are you sure you want to leave-fun"
+        }} />
       </div>
     )
   }
